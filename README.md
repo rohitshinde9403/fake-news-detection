@@ -128,3 +128,25 @@ Rohit Shinde
 ## Project status
 
 Learning project / baseline implementation. Evaluation results should be reported only after training on a suitable labeled dataset.
+
+
+## Live Demo
+
+Try the Fake News Detection web app here:
+
+[Open Live Demo](https://fake-news-detection-6t67dpp2gwto3tuj9gp2hw.streamlit.app/)
+
+## Model Performance
+
+- Dataset size: 4,000 samples
+- Test samples: 1,000
+- Accuracy: 88.9%
+- Fake class F1-score: 0.89
+- Real class F1-score: 0.89
+
+## Limitations
+
+This model uses text patterns to classify news as fake or real.
+Its predictions are not proof of factual accuracy. Always verify
+important claims using reliable sources.
+
