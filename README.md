@@ -1,152 +1,53 @@
-# Fake News Detection on Social Media
+## Fake News Detection on Social Media
 
-A beginner-friendly machine-learning project that classifies a news text as **fake** or **real** using Natural Language Processing (NLP), TF-IDF text features, and Logistic Regression.
+### Project Overview
+This project uses machine learning and natural language processing techniques to classify news text as **Fake** or **Real**. It uses TF-IDF to convert text into numerical features and Logistic Regression to make predictions.
 
-> **Important limitation:** This project is an educational baseline, not a fact-checking authority. It can learn patterns in its training data and may be wrong. A model label or confidence score does not prove a claim is true or false.
-
-## Project objectives
-
-- Prepare labeled news text for machine learning.
-- Convert text into numerical features using TF-IDF.
-- Train a Logistic Regression classifier.
-- Evaluate the model using accuracy, precision, recall, F1-score, and a confusion matrix.
-- Try a prediction on new text.
-
-These objectives align with the college report's stated goal of text preprocessing, machine-learning-based classification, and evaluation. This repository is a new implementation based on those objectives; it does not claim to be the original code used in the college project.
-
-## Tech stack
-
+### Technologies Used
 - Python
 - Pandas
-- scikit-learn
-- TF-IDF
+- Scikit-learn
+- TF-IDF Vectorizer
 - Logistic Regression
-- joblib
+- Joblib
+- Streamlit
 
-## Repository structure
+### Dataset
+- Total records: 4,000
+- Fake news records: 2,000
+- Real news records: 2,000
 
-```text
-fake-news-detection/
-├── data/
-│   └── news.csv              # Add a properly labeled dataset here
-├── fake_news_detection.py
-├── requirements.txt
-├── README.md
-└── .gitignore
-```
+### Model Evaluation
+The model was evaluated on a held-out test split containing 1,000 records.
 
-## Dataset format
+| Metric | Fake | Real |
+|---|---:|---:|
+| Precision | 0.90 | 0.88 |
+| Recall | 0.88 | 0.90 |
+| F1-score | 0.89 | 0.89 |
 
-Create `data/news.csv` with two columns: `text` and `label`. Each label must be `fake` or `real`.
+- **Test accuracy:** 88.9%
+- **Test records:** 1,000
 
-```csv
-text,label
-"Example news text from a verified dataset",real
-"Example text labeled fake by the dataset source",fake
-```
+These results describe performance on this dataset's test split. They should not be interpreted as a guarantee of accuracy on real-world news.
 
-The lines above are format examples only, not verified news. Do not use them as evidence or for meaningful model evaluation. Use a reputable, appropriately licensed dataset and preserve its attribution/license information. Make sure both classes have enough examples; a larger balanced dataset is recommended.
+### Web Application
+An interactive Streamlit application allows users to enter news text and view the model's prediction.
 
-## Setup
+**Live Demo:**  
+https://fake-news-detection-6t67dpp2gwto3tuj9gp2hw.streamlit.app/
 
-Python 3.10 or newer is recommended.
+### Limitations
+- The model classifies text patterns; it does not independently verify news against trusted sources.
+- Predictions can be incorrect, especially for unfamiliar topics, satire, or misleading headlines.
+- The dataset may contain biases or labeling errors.
+- The prediction should not be treated as proof that a news story is true or false.
 
-### 1. Create and activate a virtual environment (optional but recommended)
+### Future Improvements
+- Evaluate on an independent dataset of recent news.
+- Improve data quality and verify labels.
+- Test performance on different topics and writing styles.
+- Explore additional machine learning models and features.
 
-Windows:
-
-```bash
-python -m venv .venv
-.venv\Scripts\activate
-```
-
-macOS/Linux:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-### 2. Install dependencies
-
-```bash
-python -m pip install -r requirements.txt
-```
-
-### 3. Add your dataset
-
-Put your CSV at `data/news.csv`, or pass a different path using `--data`.
-
-### 4. Train and evaluate
-
-```bash
-python fake_news_detection.py --train
-```
-
-The script prints accuracy, precision, recall, F1-score, and a confusion matrix, then saves the trained model as `fake_news_model.joblib`.
-
-### 5. Predict a text
-
-After training:
-
-```bash
-python fake_news_detection.py --predict "Type the news text you want to classify here"
-```
-
-The result is a **model prediction only**. Verify claims with reliable primary sources and professional fact-checkers.
-
-## How it works
-
-1. Load and validate the labeled CSV.
-2. Split the data into training and test sets.
-3. TF-IDF converts text into numerical features.
-4. Logistic Regression learns patterns from the training examples.
-5. Evaluate on held-out test examples.
-6. Save the trained pipeline and use it for a sample prediction.
-
-## Responsible use and limitations
-
-- Training-data quality and labeling directly affect results.
-- A random train/test split may not measure performance on new events or platforms.
-- Language, satire, context, and changing misinformation patterns can cause errors.
-- Do not present the output as a definitive truth verdict.
-- Do not upload private, copyrighted, or restricted datasets without permission.
-- Do not commit secrets, API keys, or private user data.
-
-## Future improvements
-
-- Compare Logistic Regression with Linear SVM.
-- Add cross-validation and error analysis.
-- Test performance on different topics and languages.
-- Build a small web interface after validating the model.
-- Explore source verification and explainability without treating model output as proof.
-
-## Author
-
-Rohit Shinde
-
-## Project status
-
-Learning project / baseline implementation. Evaluation results should be reported only after training on a suitable labeled dataset.
-
-
-## Live Demo
-
-Try the Fake News Detection web app here:
-
-[Open Live Demo](https://fake-news-detection-6t67dpp2gwto3tuj9gp2hw.streamlit.app/)
-
-## Model Performance
-
-- Dataset size: 4,000 samples
-- Test samples: 1,000
-- Accuracy: 88.9%
-- Fake class F1-score: 0.89
-- Real class F1-score: 0.89
-
-## Limitations
-
-This model uses text patterns to classify news as fake or real.
-Its predictions are not proof of factual accuracy. Always verify
-important claims using reliable sources.
-
+### GitHub Repository
+https://github.com/rohitshinde9403/fake-news-detection
